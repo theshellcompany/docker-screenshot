@@ -11,7 +11,6 @@ COPY screenshot.py /opt/screenshot.py
 
 RUN groupadd -r nonroot && \
   useradd -m -r -g nonroot -d /home/nonroot -s /usr/sbin/nologin -c "Nonroot User" nonroot && \
-  mkdir -p /home/nonroot/workdir && mkdir /home/nonroot/.viper && \
   chown -R nonroot:nonroot /home/nonroot && \
   usermod -a -G sudo nonroot && echo 'nonroot:nonroot' | chpasswd
 
