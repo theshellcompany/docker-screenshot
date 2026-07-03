@@ -4,7 +4,7 @@ of chromium and chromium-driver and was written for docker python:3.9-bookworm
 """
 import argparse
 import sys
-from datetime import datetime
+from datetime import datetime, UTC
 from urllib.parse import urlparse
 import socket
 import ipaddress
@@ -54,7 +54,7 @@ def main():
         options.binary_location = "/usr/bin/chromium"
         driver = webdriver.Chrome(options=options)
         driver.get(args.url)
-        isotime = datetime.utcnow().isoformat()
+        isotime = datetime.now(UTC).isoformat()
         filename = f"{isotime}_{url_parse_result.netloc}.png"
         driver.save_screenshot(f"/output/{filename}")
         driver.close()
